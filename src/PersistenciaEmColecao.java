@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class PersistenciaEmColecao implements Persistencia {
+public class PersistenciaEmColecao implements PersistenciaCliente {
 
     private ArrayList<Cliente> tabelaCliente = new ArrayList<>();
 
@@ -10,13 +10,14 @@ public class PersistenciaEmColecao implements Persistencia {
     }
 
     @Override
-    public void removerPorCpf(String cpf) {
+    public String removerPorCpf(String cpf) {
         Cliente c = this.buscarPorCpf(cpf);
 
         if(c == null){
-            System.out.println("Cliente inexistente");
+            return "Cliente inexistente";
         } else {
             tabelaCliente.remove(c);
+            return "Cliente: "+ c.getNome() +" Removido";
         }
 
     }
@@ -38,7 +39,7 @@ public class PersistenciaEmColecao implements Persistencia {
         Cliente c = this.buscarPorCpf(cpf);
 
         if(c == null){
-            System.out.println("Cliente ineistente");
+            System.out.println("Cliente inexistente");
         } else {
             tabelaCliente.remove(c);
             tabelaCliente.add(cliente);

@@ -4,8 +4,8 @@ public class Cliente {
     private String nome;
 
     public Cliente (String cpf, String nome){
-        this.nome = nome;
-        this.cpf = cpf;
+        this.nome = nome.toUpperCase();
+        this.cpf = cpf.toUpperCase();
     }
 
     public void setCpf(String cpf){
@@ -24,4 +24,8 @@ public class Cliente {
         return this.cpf;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente: "+ this.nome +" CPF: "+ this.cpf;
+    }
 }

@@ -4,8 +4,8 @@ public class Carro {
     private String modelo;
 
     public Carro(String placa, String modelo){
-        this.placa = placa;
-        this.modelo = modelo;
+        this.placa = placa.toUpperCase();
+        this.modelo = modelo.toUpperCase();
     }
 
     public void setPlaca(String placa){
@@ -22,6 +22,11 @@ public class Carro {
 
     public String getModelo(){
         return this.modelo;
+    }
+
+    @Override
+    public String toString() {
+        return "Carro: "+ this.modelo +" Placa: "+ this.placa;
     }
 }
 
