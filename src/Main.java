@@ -1,38 +1,136 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main (String [] args){
-
-        Carro c1 = new Carro("45b3-e45", "celta");
-        Carro c2 = new Carro("23r4-76p", "Hillux");
-        Carro c3 = new Carro("87br-67u", "Civic");
-        Carro c4 = new Carro("34hb-129", "S10");
-
-        Cliente cl1 = new Cliente("463.166.868-90", "Pablo");
-        Cliente cl2 = new Cliente("187.703.238-09", "Massavi");
-        Cliente cl3 = new Cliente("738.519.642-87", "Abner");
-
+        Scanner scan = new Scanner(System.in);
         PersistenciaBdCarros pbdc = new PersistenciaBdCarros();
-        PersistenciaEmColecao pec = new PersistenciaEmColecao();
+        PersistenciaBdVagas pbdv = new PersistenciaBdVagas();
+        PersistenciaBdClientes pbdcl = new PersistenciaBdClientes();
 
-        pec.salvar(cl1);
-        pec.salvar(cl2);
-        pec.salvar(cl3);
+        int opcaoMenu = 0;
+        String respostaUsuario = null;
+        int cont = 0;
 
-        pbdc.salvar(c1);
-        pbdc.salvar(c2);
-        pbdc.salvar(c3);
+        do{
+            System.out.println("\n[1] - Registrar"+
+                               "\n[2] - Atualizar"+
+                               "\n[3] - Remover"+
+                               "\n[0] - Finalizar Software");
+            opcaoMenu = scan.nextInt();
+            switch (opcaoMenu){
+                case 1:
+                    do{
+                        System.out.println("# REGISTRO #"+
+                                           "\n[1] - Cliente"+
+                                           "\n[2] - Carro"+
+                                           "\n[3] - Vaga"+
+                                           "\n[4] - Sair");
+                        opcaoMenu = scan.nextInt();
+                        switch(opcaoMenu){
+                            case 1:
+                                Cliente cl1 = new Cliente("","");
+                                System.out.println("Digite o CPF do cliente");
+                                respostaUsuario = scan.next();
+                                cl1.setCpf(respostaUsuario);
 
-        pbdc.removerPorModelo("");
-        pbdc.removerPorPlaca("613h-6bf");
+                                System.out.println("Digite o nome do cliente");
+                                respostaUsuario = scan.nextLine();
+                                respostaUsuario = scan.nextLine();
+                                cl1.setNome(respostaUsuario);
 
-        System.out.println(pec.buscarPorCpf("463.166.868-90")+"\n"+
-                           pec.removerPorCpf("738.519.642-87"));
+                                pbdcl.salvar(cl1);
+                                break;
+                            case 2:
+                                Carro c1 = new Carro("","");
+                                System.out.println("Digite a placa do carro");
+                                respostaUsuario = scan.next();
+                                c1.setPlaca(respostaUsuario);
 
-        System.out.println(pbdc.buscarPorPlaca("45B3-E45")+"\n"+
-                           pbdc.buscarPorModelo("ciVIC")+"\n"+
-                           pbdc.buscarPorPlaca("23R4-76p"));
+                                System.out.println("Digite o modelo do carro");
+                                respostaUsuario = scan.next();
+                                c1.setModelo(respostaUsuario);
 
-        System.out.println(pbdc.atualizar(c4, "87br-67u"));
+                                pbdc.salvar(c1);
+                                break;
+                            case 3:
+                                Vaga v1 = new Vaga(cont++, false, null);
+                                System.out.println("A vaga está ocupada?");
+                                respostaUsuario = scan.next().toLowerCase();
+
+                                if(respostaUsuario.equals("sim")){
+                                    v1.setOcupada(true);
+                                    System.out.println("Qual o carro que está ocupando ela?");
+                                    respostaUsuario = scan.next();
+                                    v1.setCarro(pbdc.buscarPorModelo(respostaUsuario));
+                                }
+                                break;
+                            case 4:
+                                System.out.println("# Voltando pro menu Inicial #");
+                                break;
+                            default:
+                                System.out.println("## OPCAO INVALIDA ##");
+                                break;
+                        }
+                    }while(opcaoMenu != 4);
+                case 2:
+                    do{
+                        System.out.println("\n[1] - Cliente"+
+                                "\n[2] - Carro"+
+                                "\n[3] - Vaga"+
+                                "\n[4] - Sair");
+                        opcaoMenu = scan.nextInt();
+                        switch(opcaoMenu){
+                            case 1:
+                                Cliente cl1 = new Cliente("","");
+                                System.out.println("Digite o CPF do cliente");
+                                respostaUsuario = scan.next();
+                                cl1.setCpf(respostaUsuario);
+
+                                System.out.println("Digite o nome do cliente");
+                                respostaUsuario = scan.nextLine();
+                                respostaUsuario = scan.nextLine();
+                                cl1.setNome(respostaUsuario);
+
+                                pbdcl.salvar(cl1);
+                                break;
+                            case 2:
+                                Carro c1 = new Carro("","");
+                                System.out.println("Digite a placa do carro");
+                                respostaUsuario = scan.next();
+                                c1.setPlaca(respostaUsuario);
+
+                                System.out.println("Digite o modelo do carro");
+                                respostaUsuario = scan.next();
+                                c1.setModelo(respostaUsuario);
+
+                                pbdc.salvar(c1);
+                                break;
+                            case 3:
+                                Vaga v1 = new Vaga(cont++, false, null);
+                                System.out.println("A vaga está ocupada?");
+                                respostaUsuario = scan.next().toLowerCase();
+
+                                if(respostaUsuario.equals("sim")){
+                                    v1.setOcupada(true);
+                                    System.out.println("Qual o carro que está ocupando ela?");
+                                    respostaUsuario = scan.next();
+                                    v1.setCarro(pbdc.buscarPorModelo(respostaUsuario));
+                                }
+                                break;
+                            case 4:
+                                System.out.println("# Voltando pro menu Inicial #");
+                                break;
+                            default:
+                                System.out.println("## OPCAO INVALIDA ##");
+                                break;
+                        }
+                    }while(opcaoMenu != 4);
+            }
+
+
+        }while(opcaoMenu != 0);
+
 
     }
 }

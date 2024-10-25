@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class PersistenciaEmColecao implements PersistenciaCliente {
+public class PersistenciaBdClientes implements PersistenciaCliente {
 
     private ArrayList<Cliente> tabelaCliente = new ArrayList<>();
 

@@ -26,7 +26,7 @@ public class Carro {
 
     @Override
     public String toString() {
-        return "Carro: "+ this.modelo +" Placa: "+ this.placa;
+        return this.modelo +" Placa: "+ this.placa;
     }
 }
 
