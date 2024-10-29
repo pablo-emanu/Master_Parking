@@ -48,7 +48,7 @@ public class PersistenciaBdCarros implements PersistenciaCarro {
         Carro tmp;
         for(int i = 0; i < tabelaCarro.size(); i++){
             tmp = tabelaCarro.get(i);
-            if(tmp.getModelo().equals(modelo.toUpperCase())){
+            if(tmp.getModelo().toUpperCase().equals(modelo.toUpperCase())){
                 return tmp;
             }
         }

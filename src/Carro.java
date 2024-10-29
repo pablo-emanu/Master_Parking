@@ -9,11 +9,11 @@ public class Carro {
     }
 
     public void setPlaca(String placa){
-        this.placa = placa;
+        this.placa = placa.toUpperCase();
     }
 
     public void setModelo(String modelo){
-        this.modelo = modelo;
+        this.modelo = modelo.toUpperCase();
     }
 
     public String getPlaca(){
