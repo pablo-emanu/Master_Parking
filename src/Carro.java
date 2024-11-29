@@ -1,11 +1,14 @@
 public class Carro {
 
+    private  int id;
     private String placa;
     private String modelo;
+    private int idCliente;
 
-    public Carro(String placa, String modelo){
+    public Carro(String placa, String modelo, int idCliente){
         this.placa = placa.toUpperCase();
         this.modelo = modelo.toUpperCase();
+        this.idCliente = idCliente;
     }
 
     public void setPlaca(String placa){
@@ -24,9 +27,26 @@ public class Carro {
         return this.modelo;
     }
 
+    public int getIdCliente(){
+        return this.idCliente;
+    }
+
+    public void setIdCliente(int idCliente){
+        this.idCliente = idCliente;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return this.modelo +" Placa: "+ this.placa;
+        return "Carro: " +this.modelo +" Placa: "+ this.placa;
     }
+
 }
 

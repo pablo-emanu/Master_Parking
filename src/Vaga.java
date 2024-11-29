@@ -1,42 +1,44 @@
 public class Vaga {
 
     private int numVaga;
-    private boolean ocupada;
-    private Carro carro;
+    private boolean estado;
+    private String placaCarro;
 
-    public Vaga (int numVaga, boolean ocupada, Carro carro){
-        this.numVaga = numVaga;
-        this.ocupada = ocupada;
-        this.carro = carro;
+    public Vaga (boolean estado, String placaCarro){
+        this.estado = estado;
+        this.placaCarro = placaCarro;
     }
 
     public int getNumVaga (){
         return this.numVaga;
     }
 
-    public boolean getOcupada(){
-        return this.ocupada;
+    public Boolean getEstado(){
+        return this.estado;
     }
 
     public void setNumVaga(int numVaga){
         this.numVaga = numVaga;
     }
 
-    public void setOcupada(boolean ocupada){
-        this.ocupada = ocupada;
+    public void setEstado(Boolean estado){
+        this.estado = estado;
     }
 
-    public Carro getCarro() {
-        return carro;
+    public String getPlacaCarro() {
+        return placaCarro;
     }
 
-    public void setCarro(Carro carro) {
-        this.carro = carro;
+    public void setPlacaCarro(String placaCarro) {
+        this.placaCarro = placaCarro;
     }
 
     @Override
     public String toString() {
-        return "Vaga numero: "+ this.numVaga +"\nA vaga esta "+ this.ocupada +
-                "\nPelo carro "+ this.carro;
+        if(this.estado == true){
+            return "Vaga: "+ this.numVaga + "\nVaga: Ocupada" +"\nPlaca do veiculo: "+ this.placaCarro;
+        } else {
+            return "Vaga: "+ this.numVaga + "\nVaga: Vazia";
+        }
     }
 }

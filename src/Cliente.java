@@ -1,5 +1,6 @@
 public class Cliente {
 
+    private int idCliente;
     private String cpf;
     private String nome;
 
@@ -22,6 +23,14 @@ public class Cliente {
 
     public String getCpf(){
         return this.cpf;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     @Override
