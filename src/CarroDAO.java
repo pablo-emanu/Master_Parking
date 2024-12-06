@@ -65,7 +65,7 @@ public class CarroDAO extends GenericDAO <Carro>{
         }
     }
 
-    public void listarTodos(){
+    public void listarCarros(){
         String sql = "SELECT * FROM carro";
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -82,7 +82,7 @@ public class CarroDAO extends GenericDAO <Carro>{
                 String modelo = rs.getString("modelo");
                 int idCliente = rs.getInt("id_cliente");
 
-                System.out.println("ID: "+ idCarro +" Modelo: "+ modelo +" Placa: "+ placa +" ID Cliente: "+ idCliente);
+                System.out.println("ID: "+ idCarro +" | Modelo: "+ modelo +" | Placa: "+ placa +" | ID Cliente: "+ idCliente);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -128,8 +128,8 @@ public class CarroDAO extends GenericDAO <Carro>{
 
             if(rs.next()){
                 carro = getEntityFromResult(rs);
-                System.out.println("Carro encontrado: "+ carro.getModelo() +"\nPlaca: "+ carro.getPlaca() +
-                                   "\nid do Cliente"+ carro.getIdCliente());
+                System.out.println("Carro encontrado: "+ carro.getModelo() +"| Placa: "+ carro.getPlaca() +
+                                   "| id do Cliente"+ carro.getIdCliente());
             }
         } catch (SQLException e){
             e.printStackTrace();

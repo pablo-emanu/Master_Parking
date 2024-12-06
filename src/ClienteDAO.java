@@ -22,7 +22,7 @@ public class ClienteDAO extends GenericDAO<Cliente>{
 
     @Override
     protected String getSelectQuery() {
-        return "SELECT nome_cliente, cpf FROM cliente WHERE cpf = ?";
+        return "SELECT * FROM cliente WHERE cpf = ?";
     }
 
     @Override
@@ -38,7 +38,6 @@ public class ClienteDAO extends GenericDAO<Cliente>{
                 rs.getString("nome_cliente")
         );
         cliente.setIdCliente(rs.getInt("id_cliente"));
-
         return cliente;
     }
 
@@ -58,7 +57,7 @@ public class ClienteDAO extends GenericDAO<Cliente>{
                 String nome = rs.getString("nome_cliente");
                 String cpf = rs.getString("cpf");
 
-                System.out.println("ID: "+ id +" Nome: "+ nome +" CPF: " + cpf);
+                System.out.println("ID: "+ id +" | Nome: "+ nome +" | CPF: " + cpf);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,6 +68,7 @@ public class ClienteDAO extends GenericDAO<Cliente>{
         }
     }
 
+    @Override
     public void atualizar(Cliente cliente) {
         String sql = getUpdateQuery();
         Connection conn = null;
@@ -84,7 +84,12 @@ public class ClienteDAO extends GenericDAO<Cliente>{
             System.out.println("Cliente atualizado");
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            DatabaseConnection.closeStatement(stmt);
+            DatabaseConnection.closeConnection(conn);
         }
+
+
     }
 
     public void deletar(String cpf){
@@ -121,8 +126,8 @@ public class ClienteDAO extends GenericDAO<Cliente>{
 
             if(rs.next()){
                 cliente = getEntityFromResult(rs);
-                System.out.println("Cliente encontrado nome:"+ cliente.getNome() +"\nCPF: "+ cliente.getCpf()
-                                  +"\nID: "+ cliente.getIdCliente());
+                System.out.println("Cliente encontrado nome:"+ cliente.getNome() +"| CPF: "+ cliente.getCpf()
+                                  +"| ID: "+ cliente.getIdCliente());
             }
         } catch (Exception e) {
             e.printStackTrace();

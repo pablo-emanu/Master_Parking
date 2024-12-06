@@ -84,7 +84,7 @@ public class VagaDAO extends GenericDAO<Vaga>{
         }
     }
 
-    public void listarTodasVagas(){
+    public void listarVagas(){
         String sql = "SELECT * FROM vaga";
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -101,9 +101,9 @@ public class VagaDAO extends GenericDAO<Vaga>{
                 String placaCarro = rs.getString("placaCarro");
 
                 if(estado == true){
-                    System.out.println("Vaga: "+ numVaga +" Ocupada por: "+placaCarro);
+                    System.out.println("Vaga: "+ numVaga +" | Ocupada por: "+placaCarro);
                 } else {
-                    System.out.println("Vaga: "+ numVaga +"Desocupada");
+                    System.out.println("Vaga: "+ numVaga +" | Desocupada");
                 }
             }
         } catch (Exception e) {
@@ -132,9 +132,9 @@ public class VagaDAO extends GenericDAO<Vaga>{
                 vaga = getEntityFromResult(rs);
 
                 if(vaga.getEstado() == true){
-                    System.out.println("Vaga: "+ vaga.getNumVaga() +" Ocupada Placa do carro: "+ vaga.getPlacaCarro());
+                    System.out.println("Vaga: "+ vaga.getNumVaga() +"| Ocupada Placa do carro: "+ vaga.getPlacaCarro());
                 } else {
-                    System.out.println("Vaga "+ vaga.getNumVaga() +"Desocupada");
+                    System.out.println("Vaga: "+ vaga.getNumVaga() +"| Desocupada");
                 }
             }
         } catch (Exception e) {

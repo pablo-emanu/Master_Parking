@@ -20,7 +20,6 @@ public abstract class GenericDAO <T> {
     public void salvar(T entity){
         String sql = getInsertQuery();
         executeUpdate(sql, entity);
-        System.out.println("Salvo");
     }
 
     public void atualizar(T entity) {

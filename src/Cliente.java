@@ -7,6 +7,7 @@ public class Cliente {
     public Cliente (String cpf, String nome){
         this.nome = nome.toUpperCase();
         this.cpf = cpf.toUpperCase();
+
     }
 
     public void setCpf(String cpf){
